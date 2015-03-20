@@ -1,4 +1,5 @@
 #!/bin/bash
+PATH="/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin"  
 
 if [ $EUID -ne 0 ]; then
     echo "You need to be root to be able to remove files from the system"
