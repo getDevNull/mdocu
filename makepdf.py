@@ -20,7 +20,7 @@ def main():
     parser.add_argument("--notitle", help="don't include a titlepage",
         action="store_true")
     parser.add_argument("-o", "--output", type=str, 
-        help="save file into <file>")
+        help="save file into OUTPUT")
     args = parser.parse_args()
 
     # Set output file to whatever was entered at the -o option
