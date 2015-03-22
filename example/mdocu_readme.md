@@ -1,3 +1,7 @@
+% ReadMe file for mdocu
+% Jack-Benny Persson
+% 2015-03-22
+
 # mdocu #
 mdocu is a small Python program that I've put together after getting more and
 more interested in Markdown and Pandoc. It all started after talking to
@@ -59,12 +63,6 @@ optional arguments:
   -o OUTPUT, --output OUTPUT    save file into OUTPUT
 
 ```
-### Customziation ###
-The system-wide templates are placed in */usr/share/mdocu/*. To make custom
-versions of these templates for the current users, simply copy the the two
-templates from */usr/share/mdocu/* into *~/.mdocu/*. When the `makepdf` command is
-executed, it first looks for the templates in *~/mdocu/*, and if these can't be
-found, it uses the system-wide templates from */usr/share/mdocu/*.
 
 ### Example ###
 `makepdf example.md --notoc -o example.pdf` will produce a PDF-file called
@@ -73,8 +71,7 @@ with a title page).
 By default if no -o option is given, the PDF-file will be save in *out.pdf*.
 By default mdocu will both create a table of content and a nice looking title
 page. Please note that you'll need to customize the title page by your own. This
-is done in either the system-wide */usr/share/mdocu/with-titlepage.tex* or 
-*~/.mdocu/with-titlepage.tex* for the current user.  
+is done in */usr/share/mdocu/with-titlepage.tex*.
 
 ## Thanks ##
 Thanks to [Jonas Björk](http://www.jonasbjork.net) for mentioning that

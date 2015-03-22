@@ -3,14 +3,25 @@
 
 import argparse
 from subprocess import call
+import os.path
 
 def main():
     
     # Define some variables
     outfile = "out.pdf" # Default output file
-    with_title = "/usr/share/mdocu/with-titlepage.tex" # Template with titlepage
-    without_title = "/usr/share/mdocu/without-titlepage.tex" # Template without
-                                                             # titlepage
+    home = os.path.expanduser("~")
+
+    # First try the users own with-titlepage.tex, then the system-wide
+    if  os.path.isfile(home + "/.mdocu/with-titlepage.tex"):
+        with_title = home + "/.mdocu/with-titlepage.tex"
+    else: 
+        with_title = "/usr/share/mdocu/with-titlepage.tex" 
+
+    # First try the users own without-titlepage.tex, the the system-wide
+    if os.path.isfile(home + "/.mdocu/without-titlepage.tex"):
+        without_title = home + "/.mdocu/without-titlepage.tex"        
+    else:
+        without_title = "/usr/share/mdocu/without-titlepage.tex"
 
     # Parse arguments for the script
     parser = argparse.ArgumentParser()

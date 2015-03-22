@@ -1,0 +1,8 @@
+2015-03-22
+    * Added the possibility to place user-customized versions of the templates
+      in ~/.mdocu
+    * Fixed some bugs in the templates
+    * Added another example   
+
+2015-03-20
+    * First release of mdocu
