@@ -26,6 +26,14 @@
     urlcolor=black
 }
 
+\newcommand*{\OrgSection}{}
+\let\OrgSection\section
+\renewcommand*{\section}{%
+  \clearpage
+  \OrgSection
+}
+
+
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth

@@ -6,3 +6,10 @@
 
 2015-03-20
     * First release of mdocu
+
+2015-05-11
+    * Markus Lindberg cleaned up the install & uninstall scripts
+
+2015-05-11
+    * Made the "with-titlepage" LaTeX-template start all major
+      headings on a new page. Makes the documents a bit more neat and tidy
