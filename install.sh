@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 PATH="/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin"
 
 if [ $EUID -ne 0 ]; then
@@ -11,28 +12,12 @@ if [ -d /usr/share/mdocu ]; then
     exit 1
 fi
 
-mkdir /usr/share/mdocu
-if [ $? -eq 0 ]; then
-    echo "Created /usr/share/mdocu"
-else
-    echo "Couldn't create /usr/share/mdocu, aborting"
-    exit 1
-fi
+mkdir -v /usr/share/mdocu
 
-cp without-titlepage.tex /usr/share/mdocu && \
-cp with-titlepage.tex /usr/share/mdocu
-if [ $? -eq 0 ]; then
-    echo "Copied templates to /usr/share/mdocu"
-else
-    echo "Couldn't coopy templates to /usr/share/mdocu"
-fi
+cp -v without-titlepage.tex /usr/share/mdocu
+cp -v with-titlepage.tex /usr/share/mdocu
 
-cp makepdf.py /usr/bin/makepdf
-if [ $? -eq 0 ]; then
-    echo "Copied makepdf to /usr/bin"
-    echo "Mdocu has succesfully installed on your system"
-    exit 0
-else
-    echo "Couldn't copy makepdf to to /usr/bin"
-    exit 1
-fi
+cp -v makepdf.py /usr/bin/makepdf
+
+echo "Mdocu has succesfully installed on your system"
+exit 0

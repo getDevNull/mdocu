@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 PATH="/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin"  
 
 if [ $EUID -ne 0 ]; then
@@ -19,3 +20,4 @@ echo "Removing makepdf"
 rm /usr/bin/makepdf
 echo "Done"
 
+exit 0
