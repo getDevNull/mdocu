@@ -30,6 +30,7 @@ def main():
         action="store_true")
     parser.add_argument("--notitle", help="don't include a titlepage",
         action="store_true")
+    parser.add_argument("-c", "--custom", help="use a custom template", type=str)
     parser.add_argument("-o", "--output", type=str, 
         help="save file into OUTPUT")
     args = parser.parse_args()
@@ -38,8 +39,12 @@ def main():
     if args.output:
         outfile = args.output
 
+    # Set the custom template to whatever was entered at the -c option
+    if args.custom:
+        custom = args.custom
+
     # Iterate through the formating options    
-    if args.notoc == True and args.notitle == False:
+    if args.notoc == True and args.notitle == False and not args.custom:
        call(["pandoc", "-N", "--template=" + with_title, 
             args.filename, "--filter", "pandoc-citeproc", "-o", outfile]) 
     elif args.notoc == True and args.notitle == True:
@@ -47,6 +52,12 @@ def main():
             args.filename, "--filter", "pandoc-citeproc", "-o", outfile])
     elif args.notitle == True and args.notoc == False:
        call(["pandoc", "-N", "--template=" + without_title, "--toc",
+            args.filename, "--filter", "pandoc-citeproc", "-o", outfile])
+    elif args.custom and args.notoc == True:
+        call(["pandoc", "-N", "--template=" + custom,
+            args.filename, "--filter", "pandoc-citeproc", "-o", outfile])
+    elif args.custom and args.notoc == False:
+        call(["pandoc", "-N", "--template=" + custom, "--toc",
             args.filename, "--filter", "pandoc-citeproc", "-o", outfile])
     else:
        call(["pandoc", "-N", "--template=" + with_title, "--toc",
